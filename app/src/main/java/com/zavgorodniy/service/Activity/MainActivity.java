@@ -29,15 +29,15 @@ public class MainActivity extends AppCompatActivity {
         List<String> mListYears = Arrays.asList(getResources().getStringArray(R.array.st_year));
         List<String> mListFilms = new ArrayList<>();
 
-        ListAdapter mAdapterGenres = new ListAdapter(this, R.layout.item, mListGenres);
+        ListAdapter mAdapterGenres = new ListAdapter(this, R.layout.genre, mListGenres);
         mViewGenres.setAdapter(mAdapterGenres);
         mViewGenres.setOnItemClickListener(new OnItemClick());
 
-        ListAdapter mAdapterYears = new ListAdapter(this, R.layout.item, mListYears);
+        ListAdapter mAdapterYears = new ListAdapter(this, R.layout.genre, mListYears);
         mViewYears.setAdapter(mAdapterYears);
         mViewYears.setOnItemClickListener(new OnItemClick());
 
-        ListAdapter mAdapterFilms = new ListAdapter(this, R.layout.item, mListFilms);
+        ListAdapter mAdapterFilms = new ListAdapter(this, R.layout.genre, mListFilms);
         mViewFilms.setAdapter(mAdapterFilms);
         mViewFilms.setOnItemClickListener(new OnItemClick());
 

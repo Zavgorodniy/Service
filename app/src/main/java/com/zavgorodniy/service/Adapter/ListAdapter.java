@@ -5,7 +5,6 @@ import android.support.annotation.DrawableRes;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zavgorodniy.service.R;
@@ -37,7 +36,7 @@ public class ListAdapter extends ArrayAdapter<String> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
-            convertView = View.inflate(mContext, R.layout.item, null);
+            convertView = View.inflate(mContext, R.layout.genre, null);
         }
         String name = mList.get(position);
         @DrawableRes int id = mContext.getResources().getIdentifier(name, "drawable", mContext.getPackageName());
