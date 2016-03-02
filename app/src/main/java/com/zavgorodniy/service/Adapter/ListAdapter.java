@@ -44,8 +44,8 @@ public class ListAdapter extends ArrayAdapter<String> {
 
         TextView mText = (TextView) convertView.findViewById(R.id.tv_item);
         mText.setText(name);
-        ImageView mImage = (ImageView) convertView.findViewById(R.id.iv_item);
-        mImage.setImageDrawable(mContext.getResources().getDrawable(id));
+//        ImageView mImage = (ImageView) convertView.findViewById(R.id.iv_item);
+//        mImage.setImageDrawable(mContext.getResources().getDrawable(id));
 
         return convertView;
     }
