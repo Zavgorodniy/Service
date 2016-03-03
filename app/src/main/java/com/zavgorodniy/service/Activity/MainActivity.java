@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.zavgorodniy.service.Adapter.ItemListAdapter;
 import com.zavgorodniy.service.Adapter.RequestListAdapter;
 import com.zavgorodniy.service.R;
+import com.zavgorodniy.service.Service.Controller;
 import com.zavgorodniy.service.Service.Item;
 import com.zavgorodniy.service.Service.RequestItem;
 
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<RequestItem> mRequestItems = initRequestList();
         RequestListAdapter mAdapterGenres = new RequestListAdapter(this, R.layout.request_item, mRequestItems);
         mViewGenres.setAdapter(mAdapterGenres);
-        mViewGenres.setOnItemClickListener(new OnItemClick());
+        mViewGenres.setOnItemClickListener(new OnRequestItemClick());
 
         //years adapter init
         ArrayList<String> mListYears = new ArrayList<>();
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Item> mListItems = new ArrayList<>();
         ItemListAdapter mAdapterFilms = new ItemListAdapter(this, R.layout.item, mListItems);
         mViewFilms.setAdapter(mAdapterFilms);
-        mViewFilms.setOnItemClickListener(new OnFilmClick());
+        mViewFilms.setOnItemClickListener(new OnItemClick());
     }
 
     @Override
@@ -83,22 +84,20 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    class OnItemClick implements AdapterView.OnItemClickListener {
+    class OnRequestItemClick implements AdapterView.OnItemClickListener {
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            Toast.makeText(MainActivity.this, "PRESSED ITEM " + String.valueOf(position),
-                    Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    class OnFilmClick implements AdapterView.OnItemClickListener {
-
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Intent detail = new Intent(getApplicationContext(), ItemInfo.class);
-            startActivity(detail);
+            //TODO make a requests from the request objects, not from string values
+            String[] requests = getResources().getStringArray(R.array.st_request_id);
+            int request = (Integer.parseInt(requests[position]));
+            if (request == 0)
+                Toast.makeText(MainActivity.this, "Доступно в платном обновлении!", Toast.LENGTH_SHORT).show();
+            else {
+                //TODO connect to controller
+//                Controller.makeRequest(request);
+            }
         }
     }
 
@@ -107,12 +106,20 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-            Toast.makeText(MainActivity.this, "PRESSED ITEM " + String.valueOf(position),
-                    Toast.LENGTH_SHORT).show();
+
         }
 
         @Override
         public void onNothingSelected(AdapterView<?> parent) {
+        }
+    }
+
+    class OnItemClick implements AdapterView.OnItemClickListener {
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Intent itemInfo = new Intent(getApplicationContext(), ItemInfo.class);
+            startActivity(itemInfo);
         }
     }
 
