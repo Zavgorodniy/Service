@@ -15,12 +15,14 @@ import com.zavgorodniy.service.Adapter.RequestListAdapter;
 import com.zavgorodniy.service.R;
 import com.zavgorodniy.service.Service.Controller;
 import com.zavgorodniy.service.Service.Item;
+import com.zavgorodniy.service.Service.JsonReq;
 import com.zavgorodniy.service.Service.RequestItem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
+    Controller controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         // items adapter init
         ArrayList<Item> mListFilms = new ArrayList<>();
-        mListFilms.add(new Item("name", "request_item", "rate"));
+        //mListFilms.add(new Item("name", "request_item", "rate"));
         ArrayList<Item> mListItems = new ArrayList<>();
         ItemListAdapter mAdapterFilms = new ItemListAdapter(this, R.layout.item, mListItems);
         mViewFilms.setAdapter(mAdapterFilms);
