@@ -12,7 +12,7 @@ public class Controller {
 
     public void start(){
         JsonReq jsonReq  = new JsonReq();
-        jsonReq.execute();
+        jsonReq.execute("top_rated");
     }
 
     public List<Item> getItems() {
