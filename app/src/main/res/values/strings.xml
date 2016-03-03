@@ -8,7 +8,7 @@
         <item>Анимационный</item>
         <item>Комедия</item>
         <item>Криминал</item>
-        <item>Детектив</item>
+        <item>Приключения</item>
         <item>Документальный</item>
         <item>Драма</item>
         <item>Эротика</item>
@@ -40,22 +40,22 @@
         <item>western</item>
     </string-array>
     <string-array name="st_request_id">
-        <item>action</item>
-        <item>animation</item>
-        <item>comedy</item>
-        <item>criminal</item>
-        <item>detective</item>
-        <item>documental</item>
-        <item>drama</item>
-        <item>erotic</item>
-        <item>fantastic</item>
-        <item>historical</item>
-        <item>melodrama</item>
-        <item>musical</item>
-        <item>sport</item>
-        <item>thriller</item>
-        <item>horror</item>
-        <item>western</item>
+        <item>28</item>
+        <item>16</item>
+        <item>35</item>
+        <item>80</item>
+        <item>12</item>
+        <item>99</item>
+        <item>18</item>
+        <item>0</item>
+        <item>14</item>
+        <item>36</item>
+        <item>10749</item>
+        <item>10402</item>
+        <item>0</item>
+        <item>53</item>
+        <item>27</item>
+        <item>37</item>
     </string-array>
     <string-array name="st_year">
         <item>1960 &#8211; 1980</item>
