@@ -9,17 +9,16 @@ import java.util.List;
 public class Controller {
     static private Controller controller;
 
-    private List<Item> items = new ArrayList<>();
-
-
+    private static List<Item> items = new ArrayList<>();
 
     private Controller(){
 
     }
 
-    public void start(){
+    public void start(int value){
         JsonReq jsonReq  = new JsonReq();
-        jsonReq.execute(18);
+        jsonReq.execute(value);
+
     }
 
     public List<Item> getItems() {

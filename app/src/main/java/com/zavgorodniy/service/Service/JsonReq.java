@@ -21,6 +21,7 @@ public class JsonReq extends AsyncTask<Integer, Integer, String> {
     HttpURLConnection urlConnection = null;
     BufferedReader reader = null;
     String resultJson = "";
+    Controller controller;
 
     public static String LOG_TAG = "my_log";
 
@@ -54,8 +55,7 @@ public class JsonReq extends AsyncTask<Integer, Integer, String> {
     protected void onPostExecute(String strJson) {
         super.onPostExecute(strJson);
 
-        Controller controller = null;
-        controller.getInstance();
+        controller = Controller.getInstance();
 
         JSONObject dataJsonObj;
 
@@ -67,19 +67,17 @@ public class JsonReq extends AsyncTask<Integer, Integer, String> {
                 JSONObject movie = movies.getJSONObject(i);
 
                 String name = movie.getString("original_title");
-//                Log.d(LOG_TAG, "name: " + name);
+                Log.d(LOG_TAG, "name: " + name);
                 String genre = movie.getString("genre_ids");
-//                Log.d(LOG_TAG, "genre: " + genre);
+                Log.d(LOG_TAG, "genre: " + genre);
                 String date = movie.getString("release_date");
-//                Log.d(LOG_TAG, "date: " + date);
+                Log.d(LOG_TAG, "date: " + date);
                 String rating = movie.getString("vote_average");
-//                Log.d(LOG_TAG, "rating: " + rating);
+                Log.d(LOG_TAG, "rating: " + rating);
                 String description = movie.getString("overview");
-//                Log.d(LOG_TAG, "description: " + description);
+                Log.d(LOG_TAG, "description: " + description);
                 String imageId = movie.getString("poster_path");
-//                Log.d(LOG_TAG, "imageId: " + imageId);
-
-
+                Log.d(LOG_TAG, "imageId: " + imageId);
 
                 Item item =new Item(name,genre,date,rating,description,imageId);
                 controller.setItems(item);
@@ -88,24 +86,6 @@ public class JsonReq extends AsyncTask<Integer, Integer, String> {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-//        {"adult":false,
-//                "backdrop_path":"/uS1SkjVviraGfFNgkDwe7ohTm8B.jpg",
-//                "genre_ids":[37,18,12,53],
-//            "id":281957,
-//                "original_language":"en",
-//                "original_title":"The Revenant",
-//                "overview":"In the 1820s, a frontiersman, Hugh Glass, sets out on a path of vengeance against those who left him for dead after a bear mauling.",
-//                "release_date":"2015-12-25",
-//                "poster_path":"/oXUWEc5i3wYyFnL1Ycu8ppxxPvs.jpg",
-//                "popularity":34.220287,
-//                "title":"The Revenant",
-//                "video":false,
-//                "vote_average":7.3,
-//                "vote_count":1738}
-
-        controller.start();
     }
 
     @Override
