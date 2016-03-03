@@ -33,17 +33,4 @@ public class Controller {
     public static Controller getInstance() {
         return controller == null ? (controller = new Controller()) : controller;
     }
-
-    public void olol(){
-        int i = 0;
-
-        while (i< 10){
-            System.out.println(items.get(i).getName());
-            System.out.println(items.get(i).getGenre());
-            System.out.println(items.get(i).getDate());
-            System.out.println(items.get(i).getDescription());
-            System.out.println(items.get(i).getRating());
-            i++;
-        }
-    }
 }
