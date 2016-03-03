@@ -13,12 +13,12 @@ import com.zavgorodniy.service.Service.Item;
 
 import java.util.ArrayList;
 
-public class FilmsAdapter extends ArrayAdapter<Item> {
+public class ItemListAdapter extends ArrayAdapter<Item> {
 
     private ArrayList<Item> mListItems;
     private Context mContext;
 
-    public FilmsAdapter(Context context, int resource, ArrayList<Item> items) {
+    public ItemListAdapter(Context context, int resource, ArrayList<Item> items) {
         super(context, resource, items);
         mListItems = items;
         mContext = context;
@@ -33,13 +33,13 @@ public class FilmsAdapter extends ArrayAdapter<Item> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
-            convertView = View.inflate(mContext, R.layout.genre, null);
+            convertView = View.inflate(mContext, R.layout.request_item, null);
         }
         @DrawableRes int id = mContext.getResources().getIdentifier(mListItems.get(position).imageId, "drawable", mContext.getPackageName());
 
-        TextView mText = (TextView) convertView.findViewById(R.id.tv_genre_name);
+        TextView mText = (TextView) convertView.findViewById(R.id.tv_request_name);
         mText.setText(mListItems.get(position).name);
-        ImageView mImage = (ImageView) convertView.findViewById(R.id.iv_genre_image);
+        ImageView mImage = (ImageView) convertView.findViewById(R.id.iv_request_image);
         mImage.setImageDrawable(mContext.getResources().getDrawable(id));
 
         return convertView;

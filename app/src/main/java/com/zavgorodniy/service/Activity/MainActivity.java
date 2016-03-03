@@ -10,10 +10,11 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.zavgorodniy.service.Adapter.FilmsAdapter;
-import com.zavgorodniy.service.Adapter.GenresAdapter;
+import com.zavgorodniy.service.Adapter.ItemListAdapter;
+import com.zavgorodniy.service.Adapter.RequestListAdapter;
 import com.zavgorodniy.service.R;
 import com.zavgorodniy.service.Service.Item;
+import com.zavgorodniy.service.Service.RequestItem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,16 +26,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView mViewGenres = (ListView) findViewById(R.id.lv_genre);
+        ListView mViewGenres = (ListView) findViewById(R.id.lv_request_item);
         ListView mViewFilms = (ListView) findViewById(R.id.lv_film);
         Spinner mViewYears = (Spinner) findViewById(R.id.sp_year);
 
         //genres adapter init
-        ArrayList<String> mGenresNames = new ArrayList<>();
-        ArrayList<String> mGenresImages = new ArrayList<>();
-        mGenresNames.addAll(Arrays.asList(getResources().getStringArray(R.array.st_genre_name)));
-        mGenresImages.addAll(Arrays.asList(getResources().getStringArray(R.array.st_genre_image)));
-        GenresAdapter mAdapterGenres = new GenresAdapter(this, R.layout.genre, mGenresNames, mGenresImages);
+        ArrayList<RequestItem> mRequestItems = initRequestList();
+        RequestListAdapter mAdapterGenres = new RequestListAdapter(this, R.layout.request_item, mRequestItems);
         mViewGenres.setAdapter(mAdapterGenres);
         mViewGenres.setOnItemClickListener(new OnItemClick());
 
@@ -48,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
         // items adapter init
         ArrayList<Item> mListFilms = new ArrayList<>();
-        mListFilms.add(new Item("name", "genre", "rate"));
+        mListFilms.add(new Item("name", "request_item", "rate"));
         ArrayList<Item> mListItems = new ArrayList<>();
-        FilmsAdapter mAdapterFilms = new FilmsAdapter(this, R.layout.film, mListItems);
+        ItemListAdapter mAdapterFilms = new ItemListAdapter(this, R.layout.item, mListItems);
         mViewFilms.setAdapter(mAdapterFilms);
         mViewFilms.setOnItemClickListener(new OnFilmClick());
     }
@@ -99,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Intent detail = new Intent(getApplicationContext(), Detail.class);
+            Intent detail = new Intent(getApplicationContext(), ItemInfo.class);
             startActivity(detail);
         }
     }
@@ -116,5 +114,18 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onNothingSelected(AdapterView<?> parent) {
         }
+    }
+
+    private ArrayList<RequestItem> initRequestList() {
+        ArrayList<RequestItem> requestItems = new ArrayList<>();
+
+        String[] names = getResources().getStringArray(R.array.st_request_name);
+        String[] images = getResources().getStringArray(R.array.st_request_image);
+        String[] ids = getResources().getStringArray(R.array.st_request_id);
+
+        for (int i = 0; i < names.length; i++) {
+            requestItems.add(new RequestItem(names[i], images[i], ids[i]));
+        }
+        return requestItems;
     }
 }

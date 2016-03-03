@@ -8,11 +8,11 @@
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:id="@+id/iv_genre_image"
+        android:id="@+id/iv_request_image"
         android:padding="5dp" />
 
     <TextView
-        android:id="@+id/tv_genre_name"
+        android:id="@+id/tv_request_name"
         android:layout_width="wrap_content"
         android:gravity="center_vertical"
         android:layout_height="match_parent" />
