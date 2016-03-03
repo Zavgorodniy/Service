@@ -18,22 +18,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    Controller controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Controller controller = new Controller();
+        controller = Controller.getInstance();
         controller.start();
-        int i = 0;
-        List<Item> list = controller.getItems();
-        while (i< 10){
-            list.get(i).getName();
-            list.get(i).getGenre();
-            list.get(i).getDate();
-            list.get(i).getDescription();
-            list.get(i).getRating();
-        }
     }
 
     @Override

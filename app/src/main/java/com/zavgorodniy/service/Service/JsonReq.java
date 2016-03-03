@@ -53,34 +53,31 @@ public class JsonReq extends AsyncTask<Integer, Integer, String> {
     @Override
     protected void onPostExecute(String strJson) {
         super.onPostExecute(strJson);
-        Log.d(LOG_TAG, strJson);
 
         Controller controller = null;
         controller.getInstance();
 
-        JSONObject dataJsonObj = null;
-        String secondName = "";
+        JSONObject dataJsonObj;
 
         try {
             dataJsonObj = new JSONObject(strJson);
             JSONArray movies = dataJsonObj.getJSONArray("results");
 
-            // 2. перебираем и выводим контакты каждого друга
             for (int i = 0; i < movies.length(); i++) {
                 JSONObject movie = movies.getJSONObject(i);
 
                 String name = movie.getString("original_title");
-                Log.d(LOG_TAG, "name: " + name);
+//                Log.d(LOG_TAG, "name: " + name);
                 String genre = movie.getString("genre_ids");
-                Log.d(LOG_TAG, "genre: " + genre);
+//                Log.d(LOG_TAG, "genre: " + genre);
                 String date = movie.getString("release_date");
-                Log.d(LOG_TAG, "date: " + date);
+//                Log.d(LOG_TAG, "date: " + date);
                 String rating = movie.getString("vote_average");
-                Log.d(LOG_TAG, "rating: " + rating);
+//                Log.d(LOG_TAG, "rating: " + rating);
                 String description = movie.getString("overview");
-                Log.d(LOG_TAG, "description: " + description);
+//                Log.d(LOG_TAG, "description: " + description);
                 String imageId = movie.getString("poster_path");
-                Log.d(LOG_TAG, "imageId: " + imageId);
+//                Log.d(LOG_TAG, "imageId: " + imageId);
 
 
 
@@ -108,7 +105,7 @@ public class JsonReq extends AsyncTask<Integer, Integer, String> {
 //                "vote_average":7.3,
 //                "vote_count":1738}
 
-
+        controller.start();
     }
 
     @Override

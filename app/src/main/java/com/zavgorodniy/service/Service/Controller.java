@@ -11,6 +11,12 @@ public class Controller {
 
     private List<Item> items = new ArrayList<>();
 
+
+
+    private Controller(){
+
+    }
+
     public void start(){
         JsonReq jsonReq  = new JsonReq();
         jsonReq.execute(18);
@@ -24,7 +30,20 @@ public class Controller {
         this.items.add(items);
     }
 
-    public Controller getInstance() {
+    public static Controller getInstance() {
         return controller == null ? (controller = new Controller()) : controller;
+    }
+
+    public void olol(){
+        int i = 0;
+
+        while (i< 10){
+            System.out.println(items.get(i).getName());
+            System.out.println(items.get(i).getGenre());
+            System.out.println(items.get(i).getDate());
+            System.out.println(items.get(i).getDescription());
+            System.out.println(items.get(i).getRating());
+            i++;
+        }
     }
 }
