@@ -55,6 +55,9 @@ public class JsonReq extends AsyncTask<Integer, Integer, String> {
         super.onPostExecute(strJson);
         Log.d(LOG_TAG, strJson);
 
+        Controller controller = null;
+        controller.getInstance();
+
         JSONObject dataJsonObj = null;
         String secondName = "";
 
@@ -62,22 +65,27 @@ public class JsonReq extends AsyncTask<Integer, Integer, String> {
             dataJsonObj = new JSONObject(strJson);
             JSONArray movies = dataJsonObj.getJSONArray("results");
 
-            JSONObject secondFriend = movies.getJSONObject(1);
-            secondName = secondFriend.getString("title_russian");
-            Log.d(LOG_TAG, "pew pew " + strJson);
             // 2. перебираем и выводим контакты каждого друга
             for (int i = 0; i < movies.length(); i++) {
                 JSONObject movie = movies.getJSONObject(i);
 
-                JSONObject contacts = movie.getJSONObject("contacts");
+                String name = movie.getString("original_title");
+                Log.d(LOG_TAG, "name: " + name);
+                String genre = movie.getString("genre_ids");
+                Log.d(LOG_TAG, "genre: " + genre);
+                String date = movie.getString("release_date");
+                Log.d(LOG_TAG, "date: " + date);
+                String rating = movie.getString("vote_average");
+                Log.d(LOG_TAG, "rating: " + rating);
+                String description = movie.getString("overview");
+                Log.d(LOG_TAG, "description: " + description);
+                String imageId = movie.getString("poster_path");
+                Log.d(LOG_TAG, "imageId: " + imageId);
 
-                String phone = contacts.getString("mobile");
-                String email = contacts.getString("email");
-                String skype = contacts.getString("skype");
 
-                Log.d(LOG_TAG, "phone: " + phone);
-                Log.d(LOG_TAG, "email: " + email);
-                Log.d(LOG_TAG, "skype: " + skype);
+
+                Item item =new Item(name,genre,date,rating,description,imageId);
+                controller.setItems(item);
             }
 
         } catch (JSONException e) {

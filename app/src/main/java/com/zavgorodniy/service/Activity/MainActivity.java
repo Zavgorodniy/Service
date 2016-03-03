@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Controller controller = new Controller();
         controller.start();
+
+
     }
 
     @Override
