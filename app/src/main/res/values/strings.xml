@@ -1,18 +1,69 @@
 <resources>
     <string name="app_name">Service</string>
-    <string-array name="st_genre">
+    <string name="st_select_genre">Выберите жанр:</string>
+    <string name="st_select_year">Выберите год выпуска:</string>
+    <string name="st_select_years">Выберите интервал выпуска:</string>
+    <string-array name="st_request_name">
+        <item>Экшн</item>
+        <item>Анимационный</item>
+        <item>Комедия</item>
+        <item>Криминал</item>
+        <item>Приключения</item>
+        <item>Документальный</item>
+        <item>Драма</item>
+        <item>Эротика</item>
+        <item>Фантастика</item>
+        <item>Исторический</item>
+        <item>Мелодрама</item>
+        <item>Мюзикл</item>
+        <item>Спорт</item>
+        <item>Триллер</item>
+        <item>Ужасы</item>
+        <item>Вестерн</item>
+    </string-array>
+    <string-array name="st_request_image">
+        <item>action</item>
         <item>animation</item>
         <item>comedy</item>
+        <item>criminal</item>
+        <item>detective</item>
+        <item>documental</item>
+        <item>drama</item>
+        <item>erotic</item>
+        <item>fantastic</item>
+        <item>historical</item>
+        <item>melodrama</item>
+        <item>musical</item>
+        <item>sport</item>
+        <item>thriller</item>
         <item>horror</item>
         <item>western</item>
     </string-array>
+    <string-array name="st_request_id">
+        <item>28</item>
+        <item>16</item>
+        <item>35</item>
+        <item>80</item>
+        <item>12</item>
+        <item>99</item>
+        <item>18</item>
+        <item>0</item>
+        <item>14</item>
+        <item>36</item>
+        <item>10749</item>
+        <item>10402</item>
+        <item>0</item>
+        <item>53</item>
+        <item>27</item>
+        <item>37</item>
+    </string-array>
     <string-array name="st_year">
-        <item>1960 \- 1980</item>
-        <item>1980 \- 1990</item>
-        <item>1990 \- 2000</item>
-        <item>2000 \- 2005</item>
-        <item>2005 \- 2010</item>
-        <item>2010 \- 2015</item>
+        <item>1960 &#8211; 1980</item>
+        <item>1980 &#8211; 1990</item>
+        <item>1990 &#8211; 2000</item>
+        <item>2000 &#8211; 2005</item>
+        <item>2005 &#8211; 2010</item>
+        <item>2010 &#8211; 2015</item>
         <item>2016</item>
     </string-array>
 </resources>
