@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import com.zavgorodniy.service.Adapter.ListAdapter;
 import com.zavgorodniy.service.R;
+import com.zavgorodniy.service.Service.Controller;
+import com.zavgorodniy.service.Service.JsonReq;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,28 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        ListView mViewGenres = (ListView) findViewById(R.id.lv_genre);
-        ListView mViewYears = (ListView) findViewById(R.id.lv_year);
-        ListView mViewFilms = (ListView) findViewById(R.id.lv_film);
-
-        List<String> mListGenres = Arrays.asList(getResources().getStringArray(R.array.st_genre));
-        List<String> mListYears = Arrays.asList(getResources().getStringArray(R.array.st_year));
-        List<String> mListFilms = new ArrayList<>();
-
-        ListAdapter mAdapterGenres = new ListAdapter(this, R.layout.genre, mListGenres);
-        mViewGenres.setAdapter(mAdapterGenres);
-        mViewGenres.setOnItemClickListener(new OnItemClick());
-
-        ListAdapter mAdapterYears = new ListAdapter(this, R.layout.genre, mListYears);
-        mViewYears.setAdapter(mAdapterYears);
-        mViewYears.setOnItemClickListener(new OnItemClick());
-
-        ListAdapter mAdapterFilms = new ListAdapter(this, R.layout.genre, mListFilms);
-        mViewFilms.setAdapter(mAdapterFilms);
-        mViewFilms.setOnItemClickListener(new OnItemClick());
-
-//        mAdapter.notifyDataSetChanged();
+        Controller controller = new Controller();
     }
 
     @Override
