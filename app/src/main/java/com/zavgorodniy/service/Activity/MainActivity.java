@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.zavgorodniy.service.Adapter.ListAdapter;
 import com.zavgorodniy.service.R;
 import com.zavgorodniy.service.Service.Controller;
+import com.zavgorodniy.service.Service.Item;
 import com.zavgorodniy.service.Service.JsonReq;
 
 import java.util.ArrayList;
@@ -24,8 +25,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Controller controller = new Controller();
         controller.start();
-
-
+        int i = 0;
+        List<Item> list = controller.getItems();
+        while (i< 10){
+            list.get(i).getName();
+            list.get(i).getGenre();
+            list.get(i).getDate();
+            list.get(i).getDescription();
+            list.get(i).getRating();
+        }
     }
 
     @Override
