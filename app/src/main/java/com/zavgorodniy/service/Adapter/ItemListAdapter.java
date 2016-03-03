@@ -35,10 +35,10 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
         if (convertView == null) {
             convertView = View.inflate(mContext, R.layout.request_item, null);
         }
-        @DrawableRes int id = mContext.getResources().getIdentifier(mListItems.get(position).imageId, "drawable", mContext.getPackageName());
+        @DrawableRes int id = mContext.getResources().getIdentifier(mListItems.get(position).getImageId(), "drawable", mContext.getPackageName());
 
         TextView mText = (TextView) convertView.findViewById(R.id.tv_request_name);
-        mText.setText(mListItems.get(position).name);
+        mText.setText(mListItems.get(position).getName());
         ImageView mImage = (ImageView) convertView.findViewById(R.id.iv_request_image);
         mImage.setImageDrawable(mContext.getResources().getDrawable(id));
 

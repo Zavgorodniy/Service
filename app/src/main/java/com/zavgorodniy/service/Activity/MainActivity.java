@@ -54,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
         ItemListAdapter mAdapterFilms = new ItemListAdapter(this, R.layout.item, mListItems);
         mViewFilms.setAdapter(mAdapterFilms);
         mViewFilms.setOnItemClickListener(new OnItemClick());
+
+
+
     }
 
     @Override
