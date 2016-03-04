@@ -2,10 +2,15 @@ package com.zavgorodniy.service.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zavgorodniy.service.R;
@@ -30,8 +35,8 @@ public class ItemInfo extends Activity{
             }
         });
 
-//        ImageView mImage = (ImageView) findViewById(R.id.iv_item_image);
-//        mImage.setImageDrawable(loadImage(getIntent().getStringExtra("imageId")));
+        new DownloadImageTask((ImageView) findViewById(R.id.iv_image)).execute("http://image.tmdb.org/t/p/w300/" + getIntent().getStringExtra("imageId"));
+
         TextView description = (TextView) findViewById(R.id.tv_description);
         description.setText(getIntent().getStringExtra("description"));
 
@@ -54,6 +59,31 @@ public class ItemInfo extends Activity{
             return Drawable.createFromStream(is, src);
         } catch (Exception e) {
             return null;
+        }
+    }
+
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
         }
     }
 }
