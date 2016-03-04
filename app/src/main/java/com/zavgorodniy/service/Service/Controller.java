@@ -16,6 +16,7 @@ public class Controller {
     }
 
     public void start(int value){
+//        items.clear();
         JsonReq jsonReq  = new JsonReq();
         jsonReq.execute(value);
 

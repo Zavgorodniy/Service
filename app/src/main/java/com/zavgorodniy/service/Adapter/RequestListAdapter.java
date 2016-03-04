@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.zavgorodniy.service.R;
 import com.zavgorodniy.service.Service.RequestItem;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RequestListAdapter extends ArrayAdapter<RequestItem> {
@@ -25,7 +24,6 @@ public class RequestListAdapter extends ArrayAdapter<RequestItem> {
         mItems = items;
         mContext = context;
     }
-
 
     @Override
     public RequestItem getItem(int position) {

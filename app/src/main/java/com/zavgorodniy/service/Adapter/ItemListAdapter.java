@@ -1,24 +1,25 @@
 package com.zavgorodniy.service.Adapter;
 
 import android.content.Context;
-import android.support.annotation.DrawableRes;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zavgorodniy.service.R;
 import com.zavgorodniy.service.Service.Item;
 
-import java.util.ArrayList;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.List;
 
 public class ItemListAdapter extends ArrayAdapter<Item> {
 
-    private ArrayList<Item> mListItems;
+    private List<Item> mListItems;
     private Context mContext;
 
-    public ItemListAdapter(Context context, int resource, ArrayList<Item> items) {
+    public ItemListAdapter(Context context, int resource, List<Item> items) {
         super(context, resource, items);
         mListItems = items;
         mContext = context;
@@ -30,18 +31,33 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
     }
 
     @Override
+    public int getPosition(Item item) {
+        return super.getPosition(item);
+    }
+
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        if (convertView == null) {
-            convertView = View.inflate(mContext, R.layout.request_item, null);
-        }
-        @DrawableRes int id = mContext.getResources().getIdentifier(mListItems.get(position).getImageId(), "drawable", mContext.getPackageName());
+        if (convertView == null)
+            convertView = View.inflate(mContext, R.layout.item, null);
 
-        TextView mText = (TextView) convertView.findViewById(R.id.tv_request_name);
-        mText.setText(mListItems.get(position).getName());
-        ImageView mImage = (ImageView) convertView.findViewById(R.id.iv_request_image);
-        mImage.setImageDrawable(mContext.getResources().getDrawable(id));
+        Item item = mListItems.get(position);
+
+        TextView mText = (TextView) convertView.findViewById(R.id.tv_item_name);
+        mText.setText(item.getName());
+
+        TextView mTextRating = (TextView) convertView.findViewById(R.id.tv_item_rating);
+        mTextRating.setText(item.getRating());
 
         return convertView;
+    }
+
+    private Drawable loadImage(String src) {
+        try {
+            InputStream is = (InputStream) new URL("http://image.tmdb.org/t/p/w300/" + src).getContent();
+            return Drawable.createFromStream(is, src);
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

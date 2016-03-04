@@ -3,6 +3,8 @@
     <string name="st_select_genre">Выберите жанр:</string>
     <string name="st_select_year">Выберите год выпуска:</string>
     <string name="st_select_years">Выберите интервал выпуска:</string>
+    <string name="poster">poster</string>
+    <string name="info_title">Информация о фильме:</string>
     <string-array name="st_request_name">
         <item>Экшн</item>
         <item>Анимационный</item>
@@ -58,6 +60,7 @@
         <item>37</item>
     </string-array>
     <string-array name="st_year">
+        <item>любой год выпуска</item>
         <item>1960 &#8211; 1980</item>
         <item>1980 &#8211; 1990</item>
         <item>1990 &#8211; 2000</item>

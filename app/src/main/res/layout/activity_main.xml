@@ -55,12 +55,13 @@
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/sp_year" />
+                android:id="@+id/sp_range"
+                android:layout_marginBottom="5dp" />
 
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/lv_film" />
+                android:id="@+id/lv_item" />
         </LinearLayout>
 
     </LinearLayout>

@@ -7,7 +7,9 @@ package com.zavgorodniy.service.Service;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import org.json.*;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -79,7 +81,7 @@ public class JsonReq extends AsyncTask<Integer, Integer, String> {
                 String imageId = movie.getString("poster_path");
                 Log.d(LOG_TAG, "imageId: " + imageId);
 
-                Item item =new Item(name,genre,date,rating,description,imageId);
+                Item item = new Item(name,genre,date,rating,description,imageId);
                 controller.setItems(item);
             }
 
