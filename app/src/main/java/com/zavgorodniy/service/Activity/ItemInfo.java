@@ -41,12 +41,6 @@ public class ItemInfo extends Activity{
         TextView rating = (TextView) findViewById(R.id.tv_rating);
         rating.setText("Рейтинг: " + getIntent().getStringExtra("rating"));
 
-//        String genreSt = "";
-//        String[] genres = getIntent().getStringExtra("genre").substring(1, genreSt.length() - 1).split(",");
-//        for (String genre: genres) {
-//            genreSt += this.getResources().getString()
-//        }
-
         TextView genre = (TextView) findViewById(R.id.tv_genre);
         genre.setText("Жанр: " + getIntent().getStringExtra("genre"));
 

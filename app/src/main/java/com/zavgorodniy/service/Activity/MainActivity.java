@@ -181,13 +181,13 @@ public class MainActivity extends AppCompatActivity {
 
             item = itemsList.get(position);
             itemInfo.putExtra("name", item.getName());
-            //TODO parser for film genres
-            itemInfo.putExtra("genre", item.getGenre());
+            itemInfo.putExtra("genre", parseGenres(item.getGenre()));
             itemInfo.putExtra("date", item.getDate());
             itemInfo.putExtra("rating", item.getRating());
             itemInfo.putExtra("description", item.getDescription());
             itemInfo.putExtra("imageId", item.getImageId());
 
+            itemsList.clear();
             startActivity(itemInfo);
         }
     }
@@ -211,5 +211,20 @@ public class MainActivity extends AppCompatActivity {
         itemsList = controller.getItems();
         itemsListAdapter.addAll(itemsList);
         itemsListAdapter.notifyDataSetChanged();
+    }
+
+    private String parseGenres(String st) {
+        StringBuilder genreSt = new StringBuilder();
+        String[] genresId = st.substring(1, st.length() - 1).split(",");
+        for (String genre: genresId) {
+            for (RequestItem item: requestItems) {
+                if (item.request.equals(genre)) {
+                    genreSt.append(item.name);
+                    genreSt.append(", ");
+                }
+            }
+        }
+        genreSt.setLength(genreSt.length() - 2);
+        return genreSt.toString();
     }
 }
