@@ -53,15 +53,6 @@ public class ItemInfo extends Activity{
         date.setText("Дата: " + getIntent().getStringExtra("date"));
     }
 
-    private Drawable loadImage(String src) {
-        try {
-            InputStream is = (InputStream) new URL("http://image.tmdb.org/t/p/w300/" + src).getContent();
-            return Drawable.createFromStream(is, src);
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
 

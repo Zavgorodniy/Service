@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements JsonReq.AsyncResu
     ArrayAdapter<String> rangeListAdapter;
     Intent itemInfo;
     String genre;
-    static MainActivity activity;
 
     Item item;
 
@@ -40,7 +39,6 @@ public class MainActivity extends AppCompatActivity implements JsonReq.AsyncResu
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        activity = this;
 
         controller = Controller.getInstance();
 
@@ -81,7 +79,6 @@ public class MainActivity extends AppCompatActivity implements JsonReq.AsyncResu
 
     @Override
     protected void onRestart() {
-        itemsListAdapter.notifyDataSetChanged();
         super.onRestart();
     }
 
@@ -100,12 +97,7 @@ public class MainActivity extends AppCompatActivity implements JsonReq.AsyncResu
         super.onDestroy();
     }
 
-    @Override
-    public void onResult(List<Item> Items) {
-        itemsList = controller.getItems();
-        itemsListAdapter.addAll(itemsList);
-        itemsListAdapter.notifyDataSetChanged();
-    }
+
 
     class OnRequestItemClick implements AdapterView.OnItemClickListener {
 
@@ -184,6 +176,7 @@ public class MainActivity extends AppCompatActivity implements JsonReq.AsyncResu
         }
     }
 
+
     class OnItemClick implements AdapterView.OnItemClickListener {
 
         @Override
@@ -198,6 +191,7 @@ public class MainActivity extends AppCompatActivity implements JsonReq.AsyncResu
             itemInfo.putExtra("description", item.getDescription());
             itemInfo.putExtra("imageId", item.getImageId());
 
+            itemsList.clear();
             startActivity(itemInfo);
         }
     }
@@ -218,6 +212,13 @@ public class MainActivity extends AppCompatActivity implements JsonReq.AsyncResu
     private void sendRequest(int request) {
         itemsListAdapter.clear();
         controller.start(this,request);
+    }
+
+    @Override
+    public void onResult(List<Item> Items) {
+        itemsList = controller.getItems();
+        itemsListAdapter.addAll(itemsList);
+        itemsListAdapter.notifyDataSetChanged();
     }
 
     private String parseGenres(String st) {
